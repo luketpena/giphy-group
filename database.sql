@@ -30,7 +30,6 @@ INSERT INTO "category_image" (
 	VALUES (1, 1, 1)
 );
 
-
 -- Default categories. You may change them :)
 INSERT INTO "category" ("name")
 VALUES ('funny'), ('vega'), ('cartoon'), ('nsfw'), ('meme');
