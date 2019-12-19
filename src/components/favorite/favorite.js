@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from './node_modules/react';
+import { connect } from './node_modules/react-redux';
 
-class favorite extends Component {
+class Favorite extends Component {
 
     render(){
         return (
@@ -13,4 +13,4 @@ class favorite extends Component {
 
 
 
-export default connect() (favorite);
+export default connect() (Favorite);
