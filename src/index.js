@@ -13,7 +13,7 @@ import axios from 'axios';
 function * rootSaga () {
   yield takeEvery('SEARCH_GIPHY', searchGiphy);
 }
- // SAGAS
+// SAGAS
 function * searchGiphy (action) {
   try{
     console.log('ACTION PAYLOAD-->',action.payload);
@@ -22,16 +22,19 @@ function * searchGiphy (action) {
   }
   catch (error){
     console.log('error getting giphy search:', error);
-    
   }
 }
-  // REDUCERS
+
+
+ // REDUCERS
   const searchReducer = (state=[], action) => {
     if(action.type === 'GET_SEARCH'){
       return action.payload;
     }
     return state;
   }
+
+
 
 
 //Creating store instance for Saga
