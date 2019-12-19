@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/search/:searchQuery', (req, res) => {
   let apiKey = process.env.API_KEY;
   console.log(req.params.searchQuery);
-  axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${req.params.searchQuery}&limit=10`).then(response=>{
+  axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${req.params.searchQuery}&limit=12`).then(response=>{
     console.log('FIND BABIES------------>',response.data.data);
     searchResults = [];
     for (let item of response.data.data) {

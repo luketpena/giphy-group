@@ -1,0 +1,33 @@
+.imageCard {
+  width: 500px;
+  height: 500px;
+  box-shadow: 0 4px 16px 0px rgba(0,0,0,.5);
+  margin: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imageCard img {
+  width: 500px;
+  height: 450px;
+  object-fit: cover;
+  
+  
+}
+
+.imageCard button {
+  display: block;
+  width: 500px;
+  height: 50px;
+  margin: 0 auto;
+  outline: none;
+  border: none;
+  padding: 0;
+}
+
+.pictureBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
