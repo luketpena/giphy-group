@@ -9,6 +9,33 @@ CREATE TABLE "category" (
     "name" VARCHAR (100) NOT NULL
 );
 
+
+CREATE TABLE "images" (
+	"id" SERIAL PRIMARY KEY,
+	"title" VARCHAR (100),
+	"url" VARCHAR (300),
+	"category_id" integer REFERENCES "category"
+
+);
+
+-- STRETCH
+DROP TABLE "category_image";
+CREATE TABLE "category_image" (
+	"id" SERIAL PRIMARY KEY,
+	"category_id" integer REFERENCES "category",
+	"images_id" integer REFERENCES "images"
+);
+
+INSERT INTO "category_image" (
+	VALUES (1, 1, 1)
+);
+
+
 -- Default categories. You may change them :)
 INSERT INTO "category" ("name")
 VALUES ('funny'), ('vega'), ('cartoon'), ('nsfw'), ('meme');
+
+-- Insert into images
+INSERT INTO "images"
+VALUES (1, 'britney spears GIF', 'https://media0.giphy.com/media/h3MqNDxRLZO8w/giphy.gif', 1)
+;
