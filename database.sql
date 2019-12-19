@@ -9,7 +9,6 @@ CREATE TABLE "category" (
     "name" VARCHAR (100) NOT NULL
 );
 
-
 CREATE TABLE "images" (
 	"id" SERIAL PRIMARY KEY,
 	"title" VARCHAR (100),
@@ -36,5 +35,4 @@ VALUES ('funny'), ('vega'), ('cartoon'), ('nsfw'), ('meme');
 
 -- Insert into images
 INSERT INTO "images"
-VALUES (1, 'britney spears GIF', 'https://media0.giphy.com/media/h3MqNDxRLZO8w/giphy.gif', 1)
-;
+VALUES (1, 'britney spears GIF', 'https://media0.giphy.com/media/h3MqNDxRLZO8w/giphy.gif', 1);
