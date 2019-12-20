@@ -25,6 +25,16 @@ class AddNewPage extends Component {
     }
   }
 
+  addToFavorites = ()=> {
+    console.log('ADD TO FAVORITES');
+    let newFavorite = {
+      image_url: this.props.image.image_url,
+      title: this.props.image.title
+    }
+    this.props.dispatch({type: 'ADD_NEW_FAVORITE', payload: newFavorite});
+    this.props.history.push('/');
+  }
+
   render () {
     return (
       <div >
@@ -36,6 +46,7 @@ class AddNewPage extends Component {
             return <label key={i}><input  type="checkbox" value={item.name} onClick={(event)=>this.clickCategory(event,item.id)}/> {item.name} </label>
           })}
         </div>
+        <button onClick={this.addToFavorites}>Add Favorite</button>
       </div>
     )
   }
