@@ -4,9 +4,14 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Favorite from '../Favorite/Favorite'
 import SearchPage from '../SearchPage/SearchPage';
+import AddNewPage from '../AddNewPage/AddNewPage';
 
 
 class App extends Component {
+
+  componentDidMount () {
+    this.props.dispatch({type: 'GET_CATEGORIES'});
+  }
 
   render() {
     return (
@@ -21,6 +26,7 @@ class App extends Component {
           </nav>
           <Route exact path='/' component={SearchPage}/>
           <Route path='/favorite' component={Favorite}/>
+          <Route path='/addNew' component={AddNewPage}/>
         </Router>
       </div>
     );

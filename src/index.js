@@ -12,7 +12,10 @@ import axios from 'axios';
 
 function * rootSaga () {
   yield takeEvery('SEARCH_GIPHY', searchGiphy);
+  yield takeEvery('GET_CATEGORIES', getCategories);
 }
+
+
 // SAGAS
 function * searchGiphy (action) {
   try{
@@ -25,6 +28,16 @@ function * searchGiphy (action) {
   }
 }
 
+function * getCategories (action) {
+  try {
+    const getResponse = yield axios.get('/api/category');
+    yield put ({type: 'SET_CATEGORIES', payload: getResponse.data})
+  }
+  catch (error) {
+    console.log('error on getting categories:',error);
+  }
+}
+
 
  // REDUCERS
   const searchReducer = (state=[], action) => {
@@ -34,6 +47,31 @@ function * searchGiphy (action) {
     return state;
   }
 
+  const favoriteReducer = (state={
+    title: 'DEFAULT',
+    image_url: '',
+    categories: []
+  }, action) => {
+    console.log(action.payload)
+    switch (action.type) {
+      case 'SELECT_IMAGE': 
+        return action.payload
+      default: 
+        return state;
+    }
+  }
+
+  const categoryReducer = (state=[], action)=> {
+    switch (action.type) {
+      case 'SET_CATEGORIES': 
+        return action.payload
+      default: 
+        return state;
+    }
+  }
+
+
+
 
 
 
@@ -41,7 +79,9 @@ function * searchGiphy (action) {
 const sagaMiddlware = createSagaMiddleware();
 const storeInstance = createStore (
   combineReducers({
-    searchReducer
+    searchReducer,
+    favoriteReducer,
+    categoryReducer
   }),
   applyMiddleware(sagaMiddlware, logger)
 )
