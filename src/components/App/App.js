@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
-import Favorite from '../Favorite/Favorite'
+import FavoritePage from '../FavoritePage/FavoritePage';
 import SearchPage from '../SearchPage/SearchPage';
 import AddNewPage from '../AddNewPage/AddNewPage';
 
@@ -25,7 +25,7 @@ class App extends Component {
             </ul>
           </nav>
           <Route exact path='/' component={SearchPage}/>
-          <Route path='/favorite' component={Favorite}/>
+          <Route path='/favorite' component={FavoritePage}/>
           <Route path='/addNew' component={AddNewPage}/>
         </Router>
       </div>
