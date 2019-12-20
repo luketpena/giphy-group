@@ -15,10 +15,21 @@ function * rootSaga () {
   yield takeEvery('GET_CATEGORIES', getCategories);
   yield takeEvery('GET_FAVORITE_LIST',getFavoriteList);
   yield takeEvery('ADD_NEW_FAVORITE', addNewFavorite);
+  yield takeEvery('DELETE_FAVORITE', deleteFavorite)
 }
 
 
 // SAGAS
+
+function * deleteFavorite (action) {
+  try {
+    yield axios.delete('/api/favorite/'+action.payload);
+    yield put({type: 'GET_FAVORITE_LIST'})
+  }
+  catch (error){
+    console.log(error);
+  }
+}
 
 function * addNewFavorite (action) {
   try {
