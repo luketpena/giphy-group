@@ -14,10 +14,22 @@ function * rootSaga () {
   yield takeEvery('SEARCH_GIPHY', searchGiphy);
   yield takeEvery('GET_CATEGORIES', getCategories);
   yield takeEvery('GET_FAVORITE_LIST',getFavoriteList);
+  yield takeEvery('ADD_NEW_FAVORITE', addNewFavorite);
 }
 
 
 // SAGAS
+
+function * addNewFavorite (action) {
+  try {
+    yield axios.post('/api/favorite',action.payload);
+    yield put({type: 'GET_FAVORITE_LIST'})
+  }
+  catch (error){
+    console.log(error);
+  }
+}
+
 function * getFavoriteList (action) {
   try {
     const getFavoriteResponse = yield axios.get('/api/favorite');
