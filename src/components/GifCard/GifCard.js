@@ -10,11 +10,17 @@ class GifCard extends Component {
     this.props.dispatch({type: 'SELECT_IMAGE', payload: {...this.props.image, categories:[]}})
   }
 
+  renderPageStuff = ()=> {
+    switch(this.props.page) {
+      case 'search': return <button onClick={this.goToAddFavorite}>Favorite me!</button>;
+    }
+  }
+
   render () {
     return (
       <div className="imageCard">
          <img src={this.props.image.image_url} alt={this.props.image.title}/>
-         <button onClick={this.goToAddFavorite}>Favorite me!</button>
+         {this.renderPageStuff()}
       </div>
     )
   }
