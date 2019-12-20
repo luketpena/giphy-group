@@ -27,7 +27,7 @@ class SearchPage extends Component {
         {/* {JSON.stringify(this.props.images)} */}
         <div className="pictureBox">
         {this.props.images.map( (item,i)=> {     
-          return <GifCard key={i} image={item}/>
+          return <GifCard key={i} image={item} page='search'/>
         })}
         </div>
       </div>
