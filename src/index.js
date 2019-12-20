@@ -13,10 +13,21 @@ import axios from 'axios';
 function * rootSaga () {
   yield takeEvery('SEARCH_GIPHY', searchGiphy);
   yield takeEvery('GET_CATEGORIES', getCategories);
+  yield takeEvery('GET_FAVORITE_LIST',getFavoriteList);
 }
 
 
 // SAGAS
+function * getFavoriteList (action) {
+  try {
+    const getFavoriteResponse = yield axios.get('/api/favorite');
+    yield put({type: 'SET_FAVORITE_LIST', payload: getFavoriteResponse.data});
+  }
+  catch (error) {
+    console.log('Error getting favorite list:',error);    
+  }
+}
+
 function * searchGiphy (action) {
   try{
     console.log('ACTION PAYLOAD-->',action.payload);
@@ -59,6 +70,13 @@ function * getCategories (action) {
     }
   }
 
+  const favoriteListReducer = (state=[], action) => {
+    switch (action.type) {
+      case 'SET_FAVORITE_LIST': return action.payload
+      default: return state;
+    }
+  }
+
   const categoryReducer = (state=[], action)=> {
     switch (action.type) {
       case 'SET_CATEGORIES': 
@@ -79,7 +97,8 @@ const storeInstance = createStore (
   combineReducers({
     searchReducer,
     favoriteReducer,
-    categoryReducer
+    categoryReducer,
+    favoriteListReducer
   }),
   applyMiddleware(sagaMiddlware, logger)
 )
