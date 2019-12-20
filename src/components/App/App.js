@@ -25,7 +25,7 @@ class App extends Component {
             </ul>
           </nav>
           <Route exact path='/' component={SearchPage}/>
-          <Route path='/favorite' component={FavoritePage}/>
+          <Route path='/favorites' component={FavoritePage}/>
           <Route path='/addNew' component={AddNewPage}/>
         </Router>
       </div>
